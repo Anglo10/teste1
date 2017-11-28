@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+    Atualizar Pessoa
+{% endblock %}
+{% block conteudo %}
+<h1> Atualizar Pessoa </h1>
+    <form method="POST" action="{% url 'pessoa_atualizada' %}">
+        {% csrf_token %}
+
+        {{ form }}
+        <input type="hidden" name="id_pessoa" value="{{ pk }}">
+        <a href="{% url 'delete_pessoa' pk %}"> Deletar</a>
+        <input type="submit" value="Atualizar">
+    </form>
+{% endblock %}

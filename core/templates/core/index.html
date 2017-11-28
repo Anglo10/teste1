@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+    Inserir Pessoas
+{% endblock %}
+{% block conteudo %}
+    <h1>Olá Mundo!</h1>
+    <form method="POST" action="{% url 'nova_pessoa' %}">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Salvar">
+    </form>
+
+    <ul>
+        {% for pessoa in lista %}
+            <li>
+            <a href="{% url 'atualizar_pessoa' pessoa.id %}">{{ pessoa.nome }} - {{ pessoa.nascimento }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
